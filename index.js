@@ -30,7 +30,7 @@ const start = async () => {
 
         const datePicker = await driver.findElement(By.css('input[name="my-date"]'));
 
-        await datePicker.sendKeys('16/08/1970');
+        await datePicker.sendKeys('08/16/1970'); //formato fecha mm/dd/aaaa
         await delay(2000);
 
         const checkbox = await driver.findElement(By.id('my-check-2'));
