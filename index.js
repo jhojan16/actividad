@@ -14,26 +14,18 @@ const start = async () => {
 
         const textArea = await driver.findElement(By.css('textarea[name="my-textarea"]'));
 
-        await textArea.sendKeys("Anita lava la Tina");
+        await textArea.sendKeys("Anita Lava La Tina");
         await delay(2000);
 
-        const Dropdown = await driver.findElement(By.name('my-select'));
+        const dropdown = await driver.findElement(By.name('my-select'));
 
-        const select = await new Select(Dropdown);
+        const select = await new Select(dropdown);
         await select.selectByValue('3');
         await delay(2000);
 
-        const colorPicker = await driver.findElement(By.css('input[name="my-colors"]'));
+        const colorSelect = await driver.findElement(By.css('input[name="my-colors"]'));
 
-        //convertí esto R:32 G:167 B:34 a HEX #20A722
-        await colorPicker.sendKeys('#20A722');
-        await delay(2000);
-
-        const checkbox = await driver.findElement(By.id('my-check-2'));
-
-        if (!(await checkbox.isSelected())) {
-            await checkbox.click();
-        }
+        await colorSelect.sendKeys('#20A722');
         await delay(2000);
 
         const datePicker = await driver.findElement(By.css('input[name="my-date"]'));
@@ -41,14 +33,22 @@ const start = async () => {
         await datePicker.sendKeys('16/08/1970');
         await delay(2000);
 
-        const submit = await driver.findElement(By.css('button[type=submit]'));
+        const checkbox = await driver.findElement(By.id('my-check-2'));
 
-        await submit.click();
+        if (!(await checkbox.isSelected())) {
+            await checkbox.click();
+        }
+
         await delay(2000);
 
-        const textResult = await driver.findElement(By.css('h1.display-6'));
+        const button = await driver.findElement(By.css('button[type=submit]'));
 
-        const textValue = await textResult.getText();
+        await button.click();
+        await delay(2000);
+
+        const Resultado = await driver.findElement(By.css('h1.display-6'));
+
+        const textValue = await Resultado.getText();
         console.log(textValue);
         await delay(2000);
 
